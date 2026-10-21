@@ -1,0 +1,14 @@
+# This repository publishes text source only; local assets are not Git LFS input.
+* text=auto
+*.cpp text eol=lf
+*.h text eol=lf
+*.inl text eol=lf
+*.cs text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.ini text eol=crlf
+*.uproject text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf

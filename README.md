@@ -2,7 +2,17 @@
 
 Unreal Engine 5.8 的第一人称游戏工程。保留现有地图、角色、武器、宠物、菜单，以及仍与游戏耦合的编辑器、QA 和 MCP 代码。
 
-**这个仓库公开源码、配置和必要脚本。完整游戏还需要自行合法取得并恢复本地素材；仅克隆源码仓库不能直接运行完整游戏。** 资源清单只描述文件，不提供素材下载，也不授予第三方素材的使用或再分发权。
+**直接游玩请下载下方的 Windows 试玩版。** Git 仓库提供源码、配置和必要脚本；从源码运行完整游戏仍需自行合法取得并恢复本地素材。资源清单只描述文件，不提供原始素材下载，也不授予第三方素材的使用或再分发权。
+
+## 下载游戏与演示视频
+
+- [下载 Windows 64 位试玩版](https://github.com/Zkyyyds-Star/FPSMap_Project/releases/download/v0.1.0-preview.1/FPSMap_Project-Windows-x64-v0.1.0-preview.1.zip)：完整解压后运行 `Windows/HeliosOutpost.exe`，无需安装 Unreal Engine 或开发工具。
+- [演示视频（1080p / 30 fps，约 2 分 8 秒）](https://github.com/Zkyyyds-Star/FPSMap_Project/releases/download/v0.1.0-preview.1/FPSMap_Project-demo.mp4)：上传原视频，保留原画质。
+- [试玩版发布说明与已知问题](https://github.com/Zkyyyds-Star/FPSMap_Project/releases/tag/v0.1.0-preview.1) · [SHA256 校验文件](https://github.com/Zkyyyds-Star/FPSMap_Project/releases/download/v0.1.0-preview.1/SHA256SUMS.txt)
+
+游戏包包含运行资源、第三方运行库和中文游玩说明。系统需为 Windows 64 位，并具备游戏要求的图形驱动和 DirectX 功能；如提示缺少 Visual C++ 运行库，可运行包内的 `Windows/Engine/Extras/Redist/en-us/vc_redist.x64.exe`。请保留整个目录结构，不要只复制 EXE。
+
+当前为首个试玩版，两张生化地图仍有下文记录的原有 QA 失败。第三方素材的授权状态尚未逐项核实，发布成品不代表授予其中素材的提取、改作或再分发权。
 
 ## 环境与日常入口
 
@@ -57,7 +67,7 @@ Unreal Engine 5.8 的第一人称游戏工程。保留现有地图、角色、�
 - `exports/cfm_biopyramid_floating/water/water_visual_fixture.json`
 - `qa/cfm_bio_box_weapons/stun_controller_source_audit.json`
 
-从自己的合规备份或其他合法来源取得对应资源后，按清单中的相对路径恢复到项目根目录。资源文件、存档、个人设置、原始制作素材和游戏成品均不在公开源码仓库内。工具不会自动提取或下载素材。
+从自己的合规备份或其他合法来源取得对应资源后，按清单中的相对路径恢复到项目根目录。原始资源文件、存档、个人设置、原始制作素材和游戏成品均不进入 Git 源码提交；Release 单独提供已打包的可玩成品。工具不会自动提取或下载素材。
 
 ```powershell
 # 快速检查清单中的全部文件是否存在、大小是否相符
@@ -78,7 +88,7 @@ Unreal Engine 5.8 的第一人称游戏工程。保留现有地图、角色、�
 
 `.gitignore` 使用公开文件白名单，只接纳说明、资源清单、两个入口、有效的启动/构建/维护脚本、`.uproject`、`unreal/Source` 和 `unreal/Config` 内的文本源码配置。`Content`、`exports`、`qa`、制作素材、缓存、存档、日志和打包输出均留在本地；`.gitattributes` 只定义文本规则，不要求素材使用 Git LFS。
 
-准备上传的仓库为 `Zkyyyds-Star/FPSMap_Project`。本轮只做本地整理与提交准备，推送和仓库公开设置留到后续上传阶段。上传前应检查实际暂存列表、凭据、本机路径和大文件；GitHub 普通 Git 单文件有 [100 MiB 上限](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)。
+仓库为 `Zkyyyds-Star/FPSMap_Project`；Windows 成品和演示视频通过 Release 分发，不进入 Git 历史，也不使用 Git LFS。每次上传前应检查实际暂存列表、凭据、本机路径和大文件；GitHub 普通 Git 单文件有 [100 MiB 上限](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)。
 
 源码暂未添加开源许可证。第三方角色、武器、地图、模型、动画、音频、字体等素材的权利归各自权利人，授权状态尚未逐项核实；资源清单中的本地保留状态不能作为公开素材的许可。
 
@@ -97,6 +107,7 @@ Unreal Engine 5.8 的第一人称游戏工程。保留现有地图、角色、�
 | 渲染与音频 | 实际菜单截图检查；音频输出、静音恢复、18 项设置重启恢复及两首音乐续播，共 152 项通过、0 失败 |
 | 六地图独立 Shipping 包 | 完整烘焙、打包成功；项目外运行 52 项通过、0 失败，覆盖六图加载／存活、四张探险地图核心输入及抽样敌人活动 |
 | 统一启动入口 | 清理生成物后，系统 PowerShell 5.1 实际启动、菜单／渲染／项目内缓存通过，定时正常退出；14 项通过、0 失败 |
+| 试玩版下载 ZIP | 最终压缩包 CRC 与 116 个解压文件 SHA256 通过；从解压副本启动，默认地图、菜单、开始游戏、存活及实际渲染共 9 项通过、0 失败；测试结束后主动关闭验收进程 |
 
 这不是全组合验收。独立包的两张生化地图只验证加载和存活；其余输入、音频及完整流程未在该次包验收中覆盖。生化 QA 中的模型身份、补给与猎手生命周期仍有原有失败；部分敌人活动、全部角色／武器／宠物组合、每个旧预设的完整流程、启动器可选 `-Wait` 分支以及物理扬声器听感未全部覆盖。源码副本编译与素材恢复成功也不等于全部游戏流程通过。
 
